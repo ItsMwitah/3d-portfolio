@@ -6,6 +6,10 @@ import web from "./web.png";
 import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
+import AdobeIllustrator from "./AdobeIllustrator.png";
+import AdobeLightroom from "./AdobeLightroom.png";
+import AdobePhotoshop from "./AdobePhotoshop.png";
+import CreativeCloud from "./CreativeCloud.png";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
@@ -31,6 +35,10 @@ import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
 export {
+  AdobeIllustrator,
+  AdobeLightroom,
+  AdobePhotoshop,
+  CreativeCloud,
   logo,
   backend,
   creator,

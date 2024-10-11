@@ -1,4 +1,8 @@
 import {
+  AdobeIllustrator,
+  AdobeLightroom,
+  AdobePhotoshop,
+  CreativeCloud,
   mobile,
   backend,
   creator,
@@ -42,20 +46,20 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Developer",
-    icon: web,
+    title: "Adobe Photoshop",
+    icon: AdobePhotoshop,
   },
   {
-    title: "React Native Developer",
-    icon: mobile,
+    title: "Adobe Lightroom",
+    icon: AdobeLightroom,
   },
   {
-    title: "Backend Developer",
-    icon: backend,
+    title: "Adobe Illustrator",
+    icon: AdobeIllustrator,
   },
   {
-    title: "Content Creator",
-    icon: creator,
+    title: "Adobe Creative Cloud",
+    icon: CreativeCloud,
   },
 ];
 
