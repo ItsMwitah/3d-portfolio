@@ -17,8 +17,13 @@ const ProjectCard = ({
                          source_code_link,
                          isMobile,
                      }) => {
+    // Set up the motion variants, disabling it for mobile
+    const motionProps = isMobile
+        ? {} // No motion on mobile
+        : { variants: fadeIn("up", "spring", index * 0.5, 0.75) };
+
     return (
-        <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+        <motion.div {...motionProps}>
             {isMobile ? (
                 // Render without Tilt on mobile
                 <div className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'>
@@ -106,42 +111,33 @@ const ProjectCard = ({
 };
 
 const Works = () => {
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Initial state based on window width
 
     useEffect(() => {
-        // Add a listener for screen width
-        const mediaQuery = window.matchMedia("(max-width: 768px)");
-
-        // Set initial value
-        setIsMobile(mediaQuery.matches);
-
-        // Update state if the screen size changes
-        const handleMediaQueryChange = (event) => {
-            setIsMobile(event.matches);
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
         };
 
-        // Attach listener
-        mediaQuery.addEventListener("change", handleMediaQueryChange);
+        window.addEventListener("resize", handleResize);
 
-        // Clean up on component unmount
         return () => {
-            mediaQuery.removeEventListener("change", handleMediaQueryChange);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
     return (
         <>
-            <motion.div variants={textVariant()}>
+            <motion.div variants={!isMobile ? textVariant() : {}}>
                 <p className={`${styles.sectionSubText} `}>My work</p>
                 <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
             </motion.div>
 
             <div className='w-full flex'>
                 <motion.p
-                    variants={fadeIn("", "", 0.1, 1)}
+                    variants={!isMobile ? fadeIn("", "", 0.1, 1) : {}}
                     className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
                 >
-                    Following projects showcases my skills and experience through
+                    Following projects showcase my skills and experience through
                     real-world examples of my work. Each project is briefly described with
                     links to code repositories and live demos in it. It reflects my
                     ability to solve complex problems, work with different technologies,
